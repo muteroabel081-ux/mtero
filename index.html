@@ -192,9 +192,9 @@
 
     <script>
         // ---------- PRODUCT LIST (based on user's input) ----------
-        const productEntries = [
-            { img: "AEBM5567.JPG", name: "Black Leather Elegant Heels", category: "Shoes" },
-            { img: "ALPQ7041.JPG", name: "Black Leather Skin Ankle Boots", category: "Shoes" },
+        var productEntries = [
+            { img: "AEBM5567.JPG", name: "Black Leather Elegant Heels", category: "Shoes",price: 6800 },
+            { img: "ALPQ7041.JPG", name: "Black Leather Skin Ankle Boots", category: "Shoes",price: 7200 },
     
             { img: "AOVR6147.JPG", name: "Black Suede Platform Heels", category: "Shoes" },
             { img: "BFQU2489.JPG", name: "Large Stunning Golden Brown Handbags", category: "Big Handbags" },
@@ -273,21 +273,21 @@
         ];
 
         const categoryPrice = {
-            "Shoes": 5000,
-            "Big Handbags": 5500,
-            "Summer Hats": 1200,
-            "Jewelry": 3000,
-            "Sunglasses": 2500
-        };
+    "Shoes": 5500,           // changed from 5000 to 5500
+    "Big Handbags": 5500,
+    "Summer Hats": 1200,
+    "Jewelry": 3000,
+    "Sunglasses": 2500
+};
 
         let products = productEntries.map((entry, idx) => ({
-            id: idx,
-            name: entry.name,
-            category: entry.category,
-            price: categoryPrice[entry.category] || 5000,
-            img: `images/${entry.img}`,
-            uniqueId: Date.now() + idx
-        }));
+    id: idx,
+    name: entry.name,
+    category: entry.category,
+    price: entry.price || categoryPrice[entry.category] || 5000,   // custom price overrides category default
+    img: `images/${entry.img}`,
+    uniqueId: Date.now() + idx
+}));
 
         let cart = JSON.parse(localStorage.getItem('gigi_cart_v2')) || [];
 
